@@ -290,7 +290,7 @@ Node \*next;
 
 初始状态下，所有 next 指针都被设置为 NULL。
 
-![](./images/image_40STV56bUP.png)
+![](../images/image_40STV56bUP.png)
 
 题解：利用层次遍历。
 
