@@ -6,7 +6,7 @@
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search,Q
 client = Elasticsearch(
-    "30.79.105.206:80", timeout=10, max_retries=1, retry_on_timeout=False
+    "30.79.105.8:80", timeout=10, max_retries=1, retry_on_timeout=False
 )
 
 # Search().using(client).index("faq")
@@ -50,7 +50,7 @@ from elasticsearch_dsl import Document
 from elasticsearch import Elasticsearch
 
 client = Elasticsearch(
-    "30.79.105.206:80", timeout=10, max_retries=1, retry_on_timeout=False
+    "30.79.105.8:80", timeout=10, max_retries=1, retry_on_timeout=False
 )
 y = Document.mget(docs=[3,2],using=client,index="faq",_source_includes=["question"])
 
@@ -72,7 +72,7 @@ y = Document.mget(docs=[3,2],using=client,index="faq",_source_includes=["questio
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search,Q
 client = Elasticsearch(
-    "30.79.105.206:80", timeout=10, max_retries=1, retry_on_timeout=False
+    "30.79.105.8:80", timeout=10, max_retries=1, retry_on_timeout=False
 )
 
 from elasticsearch_dsl.query import DisMax,Bool

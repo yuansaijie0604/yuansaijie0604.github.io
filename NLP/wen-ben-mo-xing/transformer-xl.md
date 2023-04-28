@@ -2,14 +2,14 @@
 
 CMU联合Google Brain推出Transformer-XL：Attentive Language Models beyond a Fixed-Length Context
 
-![](images/理论-transformer-xl.png)
+![](../images/理论-transformer-xl.png)
 
 ## 理论
 
-复习[transformer](wen-ben-mo-xing/transformer.md)
+复习[transformer](../wen-ben-mo-xing/transformer.md)
 
 ### vanilla Transformer
-![](images/vanilla-transformer.png)
+![](../images/vanilla-transformer.png)
 
 
 
@@ -17,7 +17,7 @@ CMU联合Google Brain推出Transformer-XL：Attentive Language Models beyond a F
 
 
 ### 引入循环机制
-![](images/transformer-xl.png)
+![](../images/transformer-xl.png)
 
 
 
@@ -56,8 +56,8 @@ CMU联合Google Brain推出Transformer-XL：Attentive Language Models beyond a F
 
 ## 参考
 
-[论文](https://arxiv.org/abs/1901.02860)
-[huggingface](https://huggingface.co/docs/transformers/model_doc/transfo-xl#transformer-xl)
-https://blog.csdn.net/magical_bubble/article/details/89060213
+- [论文](https://arxiv.org/abs/1901.02860)
+- [huggingface](https://huggingface.co/docs/transformers/model_doc/transfo-xl#transformer-xl)
+- [https://blog.csdn.net/magical_bubble/article/details/89060213](https://blog.csdn.net/magical_bubble/article/details/89060213)
 
 

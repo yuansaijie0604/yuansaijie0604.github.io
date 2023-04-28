@@ -4,8 +4,8 @@
 
 ```python
 import elasticsearch
-es = elasticsearch.Elasticsearch(hosts=[{"host": "30.79.105.206", "port": 80}])
-# es = elasticsearch.Elasticsearch(hosts=[{"host": "30.23.109.145", "port": 80}], \
+es = elasticsearch.Elasticsearch(hosts=[{"host": "30.79.105.8", "port": 80}])
+# es = elasticsearch.Elasticsearch(hosts=[{"host": "30.23.109.8", "port": 80}], \
 #                                  http_auth=('elastic', 'sU0TlaQ4#'),\
 #                                  timeout=10, \
 #                                  max_retries=1, \
@@ -42,7 +42,7 @@ print(res)
 ```python
 import elasticsearch
 from elasticsearch import helpers
-es = elasticsearch.Elasticsearch(hosts=[{"host": "30.79.105.206", "port": 80}])
+es = elasticsearch.Elasticsearch(hosts=[{"host": "30.79.105.8", "port": 80}])
 
 import datetime
 
@@ -88,7 +88,7 @@ print("DONE!!!!!")
 
 ```python
 import elasticsearch
-es = elasticsearch.Elasticsearch(hosts=[{"host": "30.79.105.206", "port": 80}])
+es = elasticsearch.Elasticsearch(hosts=[{"host": "30.79.105.8", "port": 80}])
 dsl = {
         "query": {
             "bool": {
@@ -119,7 +119,7 @@ for d in res["hits"]["hits"]:
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search,Q
 client = Elasticsearch(
-    "30.79.105.206:80", timeout=10, max_retries=1, retry_on_timeout=False
+    "30.79.105.8:80", timeout=10, max_retries=1, retry_on_timeout=False
 )
 
 dsl ={
