@@ -4,11 +4,12 @@
 
 ## 文本模型
 
-* [模型压缩](wen-ben-mo-xing/mo-xing-ya-suo.md)
+* [transformer](wen-ben-mo-xing/transformer.md)
 * [Bert](wen-ben-mo-xing/bert.md)
 * [Transformer XL](wen-ben-mo-xing/transformer-xl.md)
 * [longformer](wen-ben-mo-xing/longformer.md)
 * [GPT](wen-ben-mo-xing/gpt.md)
+* [模型压缩](wen-ben-mo-xing/mo-xing-ya-suo.md)
 
 ## 工程能力
 
