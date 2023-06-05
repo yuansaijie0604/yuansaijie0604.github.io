@@ -25,6 +25,7 @@
 * [事件抽取](ren-wu-shi-jian/shi-jian-chou-qu.md)
 * [语义匹配](ren-wu-shi-jian/yu-yi-pi-pei/README.md)
   * [比赛](ren-wu-shi-jian/yu-yi-pi-pei/bi-sai.md)
+  * [cosent](ren-wu-shi-jian/yu-yi-pi-pei/cosent.md)
 
 ## 基础建设
 

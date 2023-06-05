@@ -23,7 +23,7 @@ ax.grid()
 plt.show()
 ```
 
-![](output_IgI4TwA6D9.png)
+![](../image/output_IgI4TwA6D9.png)
 
 # 一张图画多项指标曲线
 
@@ -53,7 +53,7 @@ plt.show()
 plt.close()
 ```
 
-![](Figure_1_k2q2JXJIfG.png)
+![](../image/Figure_1_k2q2JXJIfG.png)
 
 # 绘制子图
 
@@ -85,7 +85,7 @@ ax4.set_ylabel("precision@3")
 plt.show()
 ```
 
-![](Figure_1_0b4hvlrWMm.png)
+![](../image/Figure_1_0b4hvlrWMm.png)
 
 ```python
 # subplot 多子图
@@ -114,7 +114,7 @@ fig.align_labels()  # same as fig.align_xlabels(); fig.align_ylabels()
 plt.show()
 ```
 
-![](Figure_1_frLR6Qu-h-.png)
+![](../image/Figure_1_frLR6Qu-h-.png)
 
 # embedding可视化
 
@@ -145,7 +145,7 @@ plt.grid()
 plt.show()
 ```
 
-![](Figure_1_KTPI8aNbvp.png)
+![](../image/Figure_1_KTPI8aNbvp.png)
 
 ```python
 fig = plt.figure(figsize=(7, 7))
@@ -157,7 +157,7 @@ for i, label in enumerate(labels):
 plt.show()
 ```
 
-![](Figure_2_N-XWBWkARi.png)
+![](../image/Figure_2_N-XWBWkARi.png)
 
 # attention可视化
 
@@ -196,7 +196,7 @@ plt.tight_layout()  # 自适应调整各个展示参数，是图像更契合（�
 plt.show()
 ```
 
-![](Figure_1_ln-8Fy4QeI.png)
+![](../image/Figure_1_ln-8Fy4QeI.png)
 
 ## matshow
 
@@ -216,7 +216,7 @@ fig.colorbar(im, shrink=0.5)
 plt.show()
 ```
 
-![](Figure_2_wpcTPeJ_yg.png)
+![](../image/Figure_2_wpcTPeJ_yg.png)
 
 ## 保存每轮epoch的结果
 
@@ -246,4 +246,4 @@ plt.tight_layout()
 plt.show()
 ```
 
-![](Figure_3_OK2zIXOhgU.png)
+![](../image/Figure_3_OK2zIXOhgU.png)
