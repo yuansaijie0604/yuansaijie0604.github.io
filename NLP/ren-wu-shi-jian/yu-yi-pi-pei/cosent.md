@@ -3,10 +3,8 @@
 ## loss解析
 
 
-$$
-log(1+\sum_{(i,j)\epsilon\Omega_{pos},(k,l)\epsilon\Omega_{neg}}{e^{\lambda(cos(u_k,u_l)-cos(u_i,u_j)}})
-$$
-其中$\lambda$>0是一个超参数，实验取了20
+$$log(1+\sum_{(i,j)\epsilon\Omega_{pos},(k,l)\epsilon\Omega_{neg}}{e^{\lambda(cos(u_k,u_l)-cos(u_i,u_j)}})$$
+其中 $\lambda$ >0是一个超参数，实验取了20
 
 假设这样的batch数据：
 ```python
@@ -14,8 +12,8 @@ a = torch.tensor([0.1, 0.2, 0.8, 0.9])
 label_ids = torch.tensor([0, 0, 1, 1])
 ```
 
-- 由于$\lambda$取的是20，则 `a` 应该变成 $[2, 4, 16, 18]$
-- 计算每个正负样本差，$[2-16,\quad2-18,\quad4-16,\quad 4-18]$
+- 由于 $\lambda$ 取的是20，则 `a` 应该变成  $[2, 4, 16, 18]$
+- 计算每个正负样本差， $[2-16,\quad2-18,\quad4-16,\quad 4-18]$
 - 代入公式`torch.logsumexp(torch.tensor([0, -14, -16, -12, -14]), dim=0)`可得结果
 
 
