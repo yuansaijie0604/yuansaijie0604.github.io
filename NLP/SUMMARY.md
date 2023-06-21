@@ -16,6 +16,7 @@
 * [torch常用算子](gong-cheng-neng-li/torch-chang-yong-suan-zi.md)
 * [onnx转换](gong-cheng-neng-li/onnx-zhuan-huan.md)
 * [triton服务部署](gong-cheng-neng-li/triton-fu-wu-bu-shu.md)
+* [wandb](gong-cheng-neng-li/wandb.md)
 
 ## 任务实践
 
