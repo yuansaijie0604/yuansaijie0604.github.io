@@ -145,6 +145,8 @@ print("predict2 success------------")
 
 ### 转ONNX
 
+流程很像bert-serving中`server.graph.optimize_graph`后半段保存图的代码。
+
 ```python
 tmp_g = tf.get_default_graph().as_graph_def()
 print(tmp_g == msess.graph_def) # True
