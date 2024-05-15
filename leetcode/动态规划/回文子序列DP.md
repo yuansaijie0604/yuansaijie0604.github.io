@@ -130,7 +130,7 @@ class Solution:
         return i+1, j-1
 ```
 
-### 131. 分割回文串
+### 131. 分割回文串 - 所有分割方案，分割后的子串均满足回文
 https://leetcode-cn.com/problems/palindrome-partitioning/
 
 采用回溯的方式
@@ -187,7 +187,7 @@ class Solution:
         return res
 ```
 
-### 132. 分割回文串 II
+### 132. 分割回文串 II - 最少分割次数
 https://leetcode-cn.com/problems/palindrome-partitioning-ii/
 
 采用动态规划，把是否为回文串的结果存储好；再进行题干的动态规划。
@@ -214,19 +214,77 @@ class Solution:
         return f[-1]
 ```
 
-### 1745. 回文串分割 IV
+### 1745. 回文串分割 IV - 限定分割成三个非空的回文子串
 https://leetcode-cn.com/problems/palindrome-partitioning-iv/
 
+在131的基础上，修改dfs的内容
+```python
+class Solution:
+    def checkPartitioning(self, s: str) -> bool:
+        dp = [[True] * len(s) for _ in range(len(s))]
 
+        for i in range(len(s)-1, -1, -1):
+            for j in range(i+1, len(s)):
+                dp[i][j] = (s[i]==s[j] and dp[i+1][j-1])
 
+        def dfs(start: int, k: int = 3) -> bool:
+            if k==1 and start<len(s):
+                return dp[start][-1]  # 尽早返回
+            if start==len(s) :
+                return False
 
+            for i in range(start, len(s)):
+                if dp[start][i]:
+                    if dfs(i+1, k-1):
+                        return True
+            return False
+                    
+        return dfs(0)
+```
 
 ## 1278. 分割回文串 III
+
 https://leetcode-cn.com/problems/palindrome-partitioning-iii/
 
+```python
+class Solution:
+    def palindromePartition(self, s: str, k: int) -> int:
+
+        def cost(l, r):
+            # 把s[l,r]变成回文串需要修改多少个字符
+            ret, i, j = 0, l, r
+            while i < j:
+                ret += (0 if s[i] == s[j] else 1)
+                i += 1
+                j -= 1
+            return ret
+        """
+        f[i][j] 表示对于字符串 s 的前 i 个字符，将它分割成 j 个非空且不相交的回文串，最少需要修改的字符数。
+        """
+        n = len(s)
+        f = [[10**9] * (k + 1) for _ in range(n + 1)]
+        f[0][0] = 0
+        for i in range(1, n + 1):
+            for j in range(1, min(k, i) + 1):
+                if j == 1:
+                    f[i][j] = cost(0, i - 1)
+                else:
+                    for i0 in range(j - 1, i):
+                        f[i][j] = min(f[i][j], f[i0][j - 1] + cost(i0, i - 1))
+        
+        return f[n][k]
+```
 
 ## 其他
 
-[1771. 由子序列构造的最长回文串的长度](https://leetcode-cn.com/problems/maximize-palindrome-length-from-subsequences/)
+### 1771. 由子序列构造的最长回文串的长度
 
-[730. 统计不同回文子字符串](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/)
+https://leetcode-cn.com/problems/maximize-palindrome-length-from-subsequences/
+
+
+
+### 730. 统计不同回文子字符串
+
+https://leetcode-cn.com/problems/count-different-palindromic-subsequences/
+
+

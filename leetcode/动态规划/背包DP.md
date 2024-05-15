@@ -31,9 +31,7 @@ https://leetcode-cn.com/problems/target-sum/
     -   [ ] [879. 盈利计划](https://leetcode-cn.com/problems/profitable-schemes/)                                                                      多维费用的 0-1 背包最大值
 
 
-
-
-
+    
 [1770. 执行乘法运算的最大分数](https://leetcode-cn.com/problems/maximum-score-from-performing-multiplication-operations/)
 
 [956. 最高的广告牌](https://leetcode-cn.com/problems/tallest-billboard/)
@@ -51,7 +49,7 @@ https://leetcode-cn.com/problems/coin-change/
 
 完全背包最小值
 
-## 279. 完全平方数
+## 279. 完全平方数 - 322相似题
 https://leetcode-cn.com/problems/perfect-squares/
 
 完全背包最小值
@@ -61,7 +59,7 @@ https://leetcode-cn.com/problems/coin-change-2/
 
 完全背包方案数
 
-## 377. 组合总和 Ⅳ
+## 377. 组合总和 Ⅳ - 70相似题
 https://leetcode-cn.com/problems/combination-sum-iv/
 
 考虑物品顺序的完全背包方案数。每个物品可以重复拿，有几种装满背包方案？
