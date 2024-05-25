@@ -246,6 +246,19 @@ class Solution:
 
 https://leetcode-cn.com/problems/palindrome-partitioning-iii/
 
+给你一个由小写字母组成的字符串 s，和一个整数 k。<br>
+
+请你按下面的要求分割字符串：<br>
+
+首先，你可以将 s 中的部分字符修改为其他的小写英文字母。<br>
+接着，你需要把 s 分割成 k 个非空且不相交的子串，并且每个子串都是回文串。<br>
+请返回以这种方式分割字符串所需修改的最少字符数。<br>
+
+> 输入：s = "abc", k = 2
+> 输出：1
+> 解释：你可以把字符串分割成 "ab" 和 "c"，并修改 "ab" 中的 1 个字符，将它变成回文串。
+
+
 ```python
 class Solution:
     def palindromePartition(self, s: str, k: int) -> int:

@@ -110,9 +110,9 @@ https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/
 # 300. 最长递增子序列
 https://leetcode-cn.com/problems/longest-increasing-subsequence/
 
-> 输入：nums = [10,9,2,5,3,7,101,18]
-> 输出：4
-> 解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。
+> 输入：nums = [10,9,2,5,3,7,101,18] <br>
+> 输出：4 <br>
+> 解释：最长递增子序列是 [2,3,7,101]，因此长度为 4。<br>
 
 
 动态规划
@@ -125,7 +125,7 @@ class Solution:
         if not nums: return 0
         dptable = [1] * len(nums)
         for i in range(1, len(nums)):
-            for j in range(i,-1,-1):
+            for j in range(i, -1, -1):
                 if nums[i] > nums[j]:
                     dptable[i] = max(dptable[i], dptable[j]+1)
 
@@ -192,21 +192,26 @@ class Solution:
 ## 673. 最长递增子序列的个数
 https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/
 
+> 输入: [1,3,5,4,7]<br>
+输出: 2 <br>
+解释: 有两个最长递增子序列，分别是 [1, 3, 4, 7] 和[1, 3, 5, 7]。
+
+
 ```python
 class Solution:
     def findNumberOfLIS(self, nums: List[int]) -> int:
         """
-        dp[i]: 以i结尾的最长递增子序列
+        dp[i]: 以i结尾的最长递增子序列的长度
         cnt[i]: 以i结尾的最长递增子序列的个数
         """
         dp = [1] * len(nums)
         cnt = [1] * len(nums)
-        max_ = 0
+        max_ = 0    # 当前最大的递增子序列长度
         result = 0
 
         for i in range(len(nums)):
             for j in range(i):
-                if nums[i] > nums[j]:
+                if nums[i] > nums[j]:  # i位置的值大于j位置的值
                     if dp[j] + 1 > dp[i]:
                         dp[i] = dp[j] + 1
                         cnt[i] = cnt[j] # 重置计数
@@ -223,14 +228,13 @@ class Solution:
         return result
 ```
 
-
 ## 674. 最长连续递增序列 - 要求连续
 https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/ 
 
-> 输入：nums = [1,3,5,4,7]
-> 输出：3
-> 解释：最长连续递增序列是 [1,3,5], 长度为3。
-> 尽管 [1,3,5,7] 也是升序的子序列, 但它不是连续的，因为 5 和 7 在原数组里被 4 隔开。
+> 输入：nums = [1,3,5,4,7] <br>
+> 输出：3 <br>
+> 解释：最长连续递增序列是 [1,3,5], 长度为3。<br>
+> 尽管 [1,3,5,7] 也是升序的子序列, 但它不是连续的，因为 5 和 7 在原数组里被 4 隔开。<br>
 
 动态规划：
 ```python
@@ -243,7 +247,7 @@ class Solution:
         result = 1
         dp = [1] * len(nums)
         for i in range(len(nums)-1):
-            if nums[i+1] > nums[i]: #连续记录
+            if nums[i+1] > nums[i]: # 连续记录
                 dp[i+1] = dp[i] + 1
             result = max(result, dp[i+1])
         return result
@@ -253,12 +257,12 @@ class Solution:
 class Solution:
     def findLengthOfLCIS(self, nums: List[int]) -> int:
         if not nums: return 0
-        result = 1 #连续子序列最少也是1
+        result = 1 # 连续子序列最少也是1
         count = 1
         for i in range(len(nums)-1):
-            if nums[i+1] > nums[i]: #连续记录
+            if nums[i+1] > nums[i]: # 连续记录
                 count += 1
-            else: #不连续，count从头开始
+            else: # 不连续，count从头开始
                 count = 1
             result = max(result, count)
         return result
@@ -268,10 +272,8 @@ class Solution:
 https://leetcode-cn.com/problems/best-team-with-no-conflicts/
 
 
-
 ## 1964. 找出到每个位置为止最长的有效障碍赛跑路线
 https://leetcode-cn.com/problems/find-the-longest-valid-obstacle-course-at-each-position/
-
 
 
 # 其他
@@ -419,6 +421,7 @@ class Solution:
 
 ```python
 
+
 ```
 
 
@@ -432,15 +435,96 @@ class Solution:
 
 https://leetcode-cn.com/problems/delete-operation-for-two-strings/
 
+```python
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        """
+        可以把题转换成找 两个字符串的 最长公共子序列
+        """
+        m = len(word1)
+        n = len(word2)
+
+        # compute LCS
+        dptable = [[0]*(n+1) for _ in range((m+1))]
+        for i in range(1, m+1):
+            for j in range(1, n+1):
+                if word1[i-1] == word2[j-1]:
+                    dptable[i][j] = dptable[i-1][j-1] + 1
+                else:
+                    dptable[i][j] = max(dptable[i-1][j], dptable[i][j-1])
+        lcs = dptable[m][n]
+        return m - lcs + n - lcs
+```
+
+动态规划
+```python
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        dp = [[0] * (len(word2)+1) for _ in range(len(word1)+1)]
+        for i in range(len(word1)+1):
+            dp[i][0] = i
+        for j in range(len(word2)+1):
+            dp[0][j] = j
+        for i in range(1, len(word1)+1):
+            for j in range(1, len(word2)+1):
+                if word1[i-1] == word2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]
+                else:
+                    # 同时删除或者删除某一个
+                    dp[i][j] = min(dp[i-1][j-1] + 2, dp[i-1][j] + 1, dp[i][j-1] + 1) 
+        return dp[-1][-1]
+```
+
+## 712. 两个字符串的最小 ASCII 删除和 - 583的相似题
+https://leetcode-cn.com/problems/minimum-ascii-delete-sum-for-two-strings/
+
 
 ## 392. 判断子序列
 https://leetcode.cn/problems/is-subsequence
 
+求出最长公共子序列的长度，判断是否等于短字符串的长度即可。
+
+动态规划
+```python
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        """
+        dp[i][j] 表示以下标i-1为结尾的字符串s，和以下标j-1为结尾的字符串t，相同子序列的长度为dp[i][j]
+        """
+        dp = [[0] * (len(t)+1) for _ in range(len(s)+1)]
+        for i in range(1, len(s)+1):
+            for j in range(1, len(t)+1):
+                if s[i-1] == t[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                else:
+                    dp[i][j] = dp[i][j-1]
+            
+        return dp[-1][-1] == len(s)
+```
+
+双指针
+```python
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        n, m = len(s), len(t)
+        i = j = 0
+        while i < n and j < m:
+            if s[i] == t[j]:    # 代表存在该字符
+                i += 1
+            j += 1
+        return i == n
+```
 
 ## 115. 不同的子序列
 https://leetcode.cn/problems/distinct-subsequences
 
-这道题加了回文的限制，不知道做法有什么差别，和[回文子序列](./回文子序列DP.md)中730的差别。
+输入：s = "rabbbit", t = "rabbit" <br>
+输出：3<br>
+解释：<br>
+如下所示, 有 3 种可以从 s 中得到 "rabbit" 的方案。<br>
+rabbbit<br>
+rabbbit<br>
+rabbbit<br>
 
 ```python
 class Solution:
@@ -455,7 +539,9 @@ class Solution:
         for i in range(1, m+1):
             for j in range(1, n+1):
                 if s[i-1]==t[j-1]:
-                    # t当前的字符串可匹配可不匹配
+                    # s当前的字符串可匹配可不匹配
+                    # dp[i-1][j] 代表t中j位置的字符拿的是s中别的位置的字符
+                    # dp[i-1][j-1] 代表s和t采用当前的字符做匹配
                     dp[i][j] = dp[i-1][j] + dp[i-1][j-1]
                 else:
                     dp[i][j] = dp[i-1][j]
@@ -467,9 +553,8 @@ class Solution:
 https://programmercarl.com/0115.%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97.html
 
 
-## 712. 两个字符串的最小 ASCII 删除和
+代办：这道题和[回文子序列](./回文子序列DP.md)中730的差别
 
-https://leetcode-cn.com/problems/minimum-ascii-delete-sum-for-two-strings/
 
 ## 97. 交错字符串
 
@@ -481,7 +566,34 @@ https://leetcode-cn.com/problems/minimum-insertion-steps-to-make-a-string-palind
 
 # 正则表达式匹配
 
-[678. 有效的括号字符串](https://leetcode-cn.com/problems/valid-parenthesis-string/) (中等)
+## 678. 有效的括号字符串
+
+https://leetcode-cn.com/problems/valid-parenthesis-string/
+
+```python
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        # 在遍历过程中维护未匹配的左括号数量可能的最小值和最大值
+        """
+        任何情况下，未匹配的左括号数量必须非负，因此当最大值变成负数时，说明没有左括号可以和右括号匹配，返回 false。
+        当最小值为 0 时，不应将最小值继续减少，以确保最小值非负。
+        遍历结束时，所有的左括号都应和右括号匹配，因此只有当最小值为 0 时，字符串 s 才是有效的括号字符串。
+        """
+        minCount, maxCount = 0, 0
+        for i in range(len(s)):
+            if s[i] == '(':
+                minCount += 1
+                maxCount += 1
+            elif s[i] == ')':
+                minCount = max(minCount - 1, 0)
+                maxCount -= 1
+                if maxCount < 0:
+                    return False
+            else:
+                minCount = max(minCount - 1, 0)
+                maxCount += 1
+        return minCount == 0
+```
 
 [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/) (困难)
 

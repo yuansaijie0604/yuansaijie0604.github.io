@@ -63,8 +63,6 @@ class Solution:
             res = ppre + pre
             ppre, pre = pre, res
         return res
-
-
 ```
 
 ## 爬楼梯
