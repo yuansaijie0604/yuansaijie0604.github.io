@@ -113,20 +113,23 @@ class Solution:
 ```python
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        start, end = 0, 1
+        # 中心往外扩散
+        start, end = 0, 0
         for i in range(len(s)):
-            start1, end1 = self.extend(s, i, i, len(s))
-            start2, end2 = self.extend(s, i, i+1, len(s))
-            if end1-start1+1 > end-start:
-                start, end = start1, end1+1
-            if end2-start2+1 > end-start:
-                start, end = start2, end2+1
-        return s[start:end]
+            start1, end1 = self.extend(s, i, i)
+            if end1 - start1 > end - start:
+                start, end = start1, end1
 
-    def extend(self, s, i, j, n):
-        while i>=0  and j<n and s[i]==s[j]:
-            i -= 1
-            j += 1
+            start1, end1 = self.extend(s, i, i+1)
+            if end1 - start1 > end - start:
+                start, end = start1, end1
+
+        return s[start:end+1]
+
+    def extend(self, s: str, i: int, j: int) -> [int, int]:
+        while j<len(s) and i>=0 and s[i]==s[j]:     # s[i]==s[j]的判断放在后面，不然会报访问出界
+            i = i-1
+            j = j+1
         return i+1, j-1
 ```
 
