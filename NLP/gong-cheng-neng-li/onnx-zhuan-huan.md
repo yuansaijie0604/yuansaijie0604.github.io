@@ -1,5 +1,33 @@
 # onnx转换
 
+## torch转onnx
+
+sm_model: 建立的表示向量模型
+
+```python
+import torch
+
+dummy = torch.LongTensor([[101, 0, 1, 102]])   # 随便给个example，主要为了读取shape
+
+torch.onnx.export(
+    sm_model,
+    dummy,
+    "SM_model.onnx",
+    opset_version=10,
+    verbose=True,
+    input_names=['in1'],
+    output_names=['out1'],
+    dynamic_axes={'in1': [1]} # 设置动态shape
+)
+
+import onnxruntime as rt
+providers = ['CPUExecutionProvider']
+m = rt.InferenceSession('SM_model.onnx', providers=providers)
+%timeit m.run(None, {'in1': batch_tokenized['input_ids'].numpy()})
+
+```
+
+
 ## bert-serving转onnx
 ```shell
 bert-serving-server 1.10.0
