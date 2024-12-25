@@ -93,7 +93,7 @@ class Solution:
         res = 0
 
         for i in range(1, m+1):
-            for j in range(n, 0,-1):
+            for j in range(n, 0, -1):  # 一定是逆序的，避免覆盖
                 if nums1[i-1] == nums2[j-1]:
                     dptable[j] = dptable[j-1] + 1
                 else:
@@ -125,7 +125,7 @@ class Solution:
         if not nums: return 0
         dptable = [1] * len(nums)
         for i in range(1, len(nums)):
-            for j in range(i, -1, -1):
+            for j in range(i):
                 if nums[i] > nums[j]:
                     dptable[i] = max(dptable[i], dptable[j]+1)
 
@@ -165,6 +165,30 @@ class Solution:
         
         return piles
 ```
+简化版本
+```python
+records = [] # 表示长度为 i 的最长上升子序列的末尾元素的最小值
+
+for n in nums:
+    if len(records)==0 or n > records[-1]:
+        records.append(n)
+        continue
+
+    # 给n选个地方放
+    left, right = 0, len(records)-1
+
+    while left < right:
+        mid = left + (right-left)//2
+        if records[mid] >= n:
+            right = mid
+        else:
+            left = mid+1
+    
+    records[left] = n
+
+return len(records)
+```
+
 
 
 ## 354. 俄罗斯套娃信封问题
